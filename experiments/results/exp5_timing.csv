@@ -1,0 +1,5 @@
+min_overlap,top_k,seconds,acc@default_threshold
+0.0,all,598.2,0.837
+0.1,10,134.0,0.864
+0.1,5,99.4,0.860
+0.2,3,77.8,0.837
