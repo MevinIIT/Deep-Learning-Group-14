@@ -3,3 +3,11 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+----
+
+src/
+.python-version
+pyproject.toml
+README.md
+uv.lock

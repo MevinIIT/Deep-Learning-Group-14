@@ -1,5 +1,3 @@
-# factcheck.py
-
 import torch
 from typing import List, Dict, Optional
 import numpy as np
