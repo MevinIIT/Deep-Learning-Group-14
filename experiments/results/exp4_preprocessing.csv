@@ -1,0 +1,11 @@
+variant,pruning,premises,model_calls,acc@0.5,best_threshold,best_acc,cv_acc,FP,FN
+raw_sentence,none,5228,5228,0.837,0.36,0.855,0.833,14,18
+raw_sentence,"eps=0.1,k=10",5228,774,0.828,0.35,0.851,0.819,5,28
+clean_sentence,none,5210,5210,0.819,0.7,0.828,0.796,8,30
+clean_sentence,"eps=0.1,k=10",5210,758,0.824,0.2,0.842,0.814,7,28
+clean_title,none,5210,5210,0.810,0.4,0.824,0.787,18,21
+clean_title,"eps=0.1,k=10",5210,770,0.824,0.41,0.837,0.805,8,28
+clean_window,none,5215,5215,0.824,0.23,0.842,0.814,18,17
+clean_window,"eps=0.1,k=10",5215,1034,0.855,0.31,0.864,0.846,7,23
+clean_passage,none,686,686,0.783,0.2,0.792,0.747,18,28
+clean_passage,"eps=0.1,k=10",686,370,0.796,0.04,0.824,0.796,15,24
