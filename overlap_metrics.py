@@ -13,13 +13,18 @@ def recall(fact_set: Set[str], passage_set: Set[str]) -> float:
 
 def jaccard(fact_set: Set[str], passage_set: Set[str]) -> float:
     
-    # [Mevin - TODO] |F & P| / |F | P|.  Return 0.0 if the union is empty
-    raise NotImplementedError("TODO(Mevin): implement Jaccard overlap")
+        union = fact_set | passage_set
+        if len(union) == 0:
+            return 0.0
+        return len(fact_set & passage_set) / len(union)
 
 
 def dice(fact_set: Set[str], passage_set: Set[str]) -> float:
-    # [Mevin - TODO] 2|F & P| / (|F| + |P|).  Return 0.0 if both sets are empty
-    raise NotImplementedError("TODO(Mevin): implement Dice overlap")
+    
+        total = len(fact_set) + len(passage_set)
+        if total == 0:
+            return 0.0
+        return 2 * len(fact_set & passage_set) / total
 
 
 METRICS = {
