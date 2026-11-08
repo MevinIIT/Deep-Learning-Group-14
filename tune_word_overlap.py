@@ -1,6 +1,3 @@
-# tune_word_overlap.py -- Part 1 experiment runner   [data loading + skeleton: Kovindu | the two TODOs: Mevin]
-# Run from the repo root:   python tune_word_overlap.py
-# Goal: find the best (metric, pool, stem, stop-words, threshold) on the dev set and print a table for the report.
 import csv
 import itertools
 import os
