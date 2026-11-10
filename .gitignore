@@ -1,6 +1,8 @@
 .venv/
 .idea/
 __pycache__/
+.vscode/
+bundle/
 *.pyc
 .DS_Store
 
