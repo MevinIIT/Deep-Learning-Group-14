@@ -255,13 +255,13 @@ class WordRecallThresholdFactChecker(FactChecker):
     Pipeline: tokenize fact and passages (preprocessing.tokenize) -> score with a metric (overlap_metrics.METRICS)
     -> predict "S" if score >= threshold, else "NS".
 
-    :param threshold: decision threshold. Provisional 0.65; Mevin sets the final value using tune_word_overlap.py
+    :param threshold: decision threshold. tuned on the dev set (see experiments/part1_results.csv)
     :param metric: key of overlap_metrics.METRICS ("recall" done; "jaccard", "dice" are Mevin's)
     :param pool: "max" = score each passage separately, keep the best; "union" = merge all passages into one word set
     :param stem: apply Porter stemming
     :param remove_stopwords: drop stop words before comparing
     """
-    def __init__(self, threshold: float = 0.65, metric: str = "recall", pool: str = "max",
+    def __init__(self, threshold: float = 0.63, metric: str = "recall", pool: str = "max",
                  stem: bool = True, remove_stopwords: bool = True):
         if metric not in METRICS:
             raise ValueError("unknown metric " + repr(metric) + "; choose from " + repr(list(METRICS)))
