@@ -2,7 +2,7 @@ import csv
 import itertools
 import os
 
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt # type: ignore
 
 from factchecking_main import read_passages, read_fact_examples
 from factcheck import WordRecallThresholdFactChecker
