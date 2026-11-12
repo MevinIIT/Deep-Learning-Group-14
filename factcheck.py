@@ -255,7 +255,7 @@ class WordRecallThresholdFactChecker(FactChecker):
     Pipeline: tokenize fact and passages (preprocessing.tokenize) -> score with a metric (overlap_metrics.METRICS)
     -> predict "S" if score >= threshold, else "NS".
 
-    :param threshold: decision threshold. tuned on the dev set (see experiments/part1_results.csv)
+    :param threshold: decision threshold. tuned on the dev set (see experiments/part1_all_results.csv)
     :param metric: key of overlap_metrics.METRICS ("recall" done; "jaccard", "dice" are Mevin's)
     :param pool: "max" = score each passage separately, keep the best; "union" = merge all passages into one word set
     :param stem: apply Porter stemming
