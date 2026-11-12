@@ -8,3 +8,4 @@ transformers==4.45.2
 sentencepiece==0.2.0
 protobuf==5.28.3
 rouge-score==0.1.2
+matplotlib==3.10.9
