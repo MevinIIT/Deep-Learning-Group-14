@@ -1,22 +1,3 @@
-# experiments_word_overlap.py -- Part 1 (word overlap): ALL experiments in one file (not submitted; evidence for the report)
-# Combines Mevin's threshold tuner (real-class check, stability table, threshold plot) with the exhaustive study.
-#
-# 1. GRID: every combination of
-#      normalisation : none | stem (Porter) | lemma (WordNet) | lemma+stem
-#      stop words    : kept | removed
-#      pooling       : max (best single passage) | union (all passages merged)
-#      metric        : precision, recall, F1, Jaccard, Dice, TF-IDF cosine, IDF-weighted recall,
-#                      ROUGE-1 (P/R/F), ROUGE-2 (R/F), ROUGE-L (R/F), BLEU-1/2/4 (standard, with brevity penalty)
-#                      and BLEU-1/2/4 without the brevity penalty                     -> 320 runs
-#    For each run the best threshold on the dev set is found (dev acc), plus 5-fold cross-validated accuracy
-#    (threshold chosen on 4 folds, tested on the 5th, repeated 3x) because dev-tuned numbers are optimistic.
-# 2. CONSISTENCY CHECK: the real WordRecallThresholdFactChecker (factcheck.py + overlap_metrics.py) must reproduce
-#    the grid's accuracy for every set-based metric it supports (recall/jaccard/dice x pool x none/stem x stop).
-# 3. DEPLOYED CONFIG: accuracy of the defaults currently set in factcheck.py, a +-0.05 threshold stability table
-#    and the accuracy-vs-threshold plot.
-#
-# Run from the repo root:   python experiments_word_overlap.py
-# Output (experiments/): part1_all_results.csv, part1_threshold.png   (+ tables printed to the console)
 import csv
 import itertools
 import os

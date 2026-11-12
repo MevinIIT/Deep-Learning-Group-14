@@ -1,6 +1,5 @@
 from typing import Set
 
-
 def recall(fact_set: Set[str], passage_set: Set[str]) -> float:
     # Share of the fact's words that also appear in the passage: |F & P| / |F|
     if not fact_set:
