@@ -2,7 +2,7 @@ import re
 from typing import List
 from nltk.stem import PorterStemmer
 
-# Built-in stop-word list, so no nltk.download() (and no network) is needed at grading time.
+# own stop word list (no nltk download needed)
 STOP_WORDS = frozenset("""
 a an the and or but if of at by for with about against between into through during before after above below
 to from up down in out on off over under again further then once here there when where why how all any both each
@@ -12,16 +12,12 @@ they them their what which who whom this that these those am as until while also
 """.split())
 
 _STEMMER = PorterStemmer()
-_STEM_CACHE = {}                       # word -> stem, avoids re-stemming the same word thousands of times
-_TOKEN_RE = re.compile(r"[a-z0-9]+")   # letters/digits only -> punctuation is dropped
+_STEM_CACHE = {}                       # stems we already computed
+_TOKEN_RE = re.compile(r"[a-z0-9]+")   # letters and digits only
 
 
 def tokenize(text: str, stem: bool = True, remove_stopwords: bool = True) -> List[str]:
-    """Lowercase -> regex word tokens -> optional stop-word removal -> optional Porter stemming.
-
-    Returns a LIST (order and repeats kept) so count-based metrics such as TF-IDF cosine can use it;
-    set-based metrics simply wrap it in set().
-    """
+    """Lowercase, split into words, remove stop words, stem."""
     tokens = _TOKEN_RE.findall(text.lower())
     if remove_stopwords:
         tokens = [t for t in tokens if t not in STOP_WORDS]
