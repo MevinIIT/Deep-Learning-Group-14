@@ -320,12 +320,12 @@ class AlwaysEntailedFactChecker(FactChecker):
 
 class WordRecallThresholdFactChecker(FactChecker):
     """
-    Part 1: word-overlap fact checker.  [Kovindu: class + preprocessing + recall metric; Mevin: tuning + extra metrics]
+    Part 1: word-overlap fact checker.  [class + preprocessing + recall metric; tuning + extra metrics]
     Pipeline: tokenize fact and passages (preprocessing.tokenize) -> score with a metric (overlap_metrics.METRICS)
     -> predict "S" if score >= threshold, else "NS".
 
     :param threshold: decision threshold. tuned on the dev set (see experiments/part1_all_results.csv)
-    :param metric: key of overlap_metrics.METRICS ("recall" done; "jaccard", "dice" are Mevin's)
+    :param metric: key of overlap_metrics.METRICS ("recall" done; "jaccard", "dice")
     :param pool: "max" = score each passage separately, keep the best; "union" = merge all passages into one word set
     :param stem: apply Porter stemming
     :param remove_stopwords: drop stop words before comparing
