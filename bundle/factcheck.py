@@ -13,7 +13,7 @@ import re
 from typing import List
 from nltk.stem import PorterStemmer
 
-# Built-in stop-word list, so no nltk.download() (and no network) is needed at grading time.
+# own stop word list (no nltk download needed)
 STOP_WORDS = frozenset("""
 a an the and or but if of at by for with about against between into through during before after above below
 to from up down in out on off over under again further then once here there when where why how all any both each
@@ -23,16 +23,12 @@ they them their what which who whom this that these those am as until while also
 """.split())
 
 _STEMMER = PorterStemmer()
-_STEM_CACHE = {}                       # word -> stem, avoids re-stemming the same word thousands of times
-_TOKEN_RE = re.compile(r"[a-z0-9]+")   # letters/digits only -> punctuation is dropped
+_STEM_CACHE = {}                       # stems we already computed
+_TOKEN_RE = re.compile(r"[a-z0-9]+")   # letters and digits only
 
 
 def tokenize(text: str, stem: bool = True, remove_stopwords: bool = True) -> List[str]:
-    """Lowercase -> regex word tokens -> optional stop-word removal -> optional Porter stemming.
-
-    Returns a LIST (order and repeats kept) so count-based metrics such as TF-IDF cosine can use it;
-    set-based metrics simply wrap it in set().
-    """
+    """Lowercase, split into words, remove stop words, stem."""
     tokens = _TOKEN_RE.findall(text.lower())
     if remove_stopwords:
         tokens = [t for t in tokens if t not in STOP_WORDS]
@@ -50,7 +46,7 @@ def tokenize(text: str, stem: bool = True, remove_stopwords: bool = True) -> Lis
 from typing import Set
 
 def recall(fact_set: Set[str], passage_set: Set[str]) -> float:
-    # Share of the fact's words that also appear in the passage: |F & P| / |F|
+    # fraction of the fact's words found in the passage
     if not fact_set:
         return 0.0
     return len(fact_set & passage_set) / len(fact_set)
@@ -129,7 +125,7 @@ def overlap_recall(fact_tokens: set, text: str) -> float:
 
 
 def fact_query_tokens(fact: str, title: Optional[str]) -> set:
-    # drop the person's name, it's in almost every passage anyway
+    # drop the person's name, it is in most passages
     toks = content_tokens(fact)
     if title:
         reduced = toks - content_tokens(title)
@@ -320,15 +316,8 @@ class AlwaysEntailedFactChecker(FactChecker):
 
 class WordRecallThresholdFactChecker(FactChecker):
     """
-    Part 1: word-overlap fact checker.  [Kovindu: class + preprocessing + recall metric; Mevin: tuning + extra metrics]
-    Pipeline: tokenize fact and passages (preprocessing.tokenize) -> score with a metric (overlap_metrics.METRICS)
-    -> predict "S" if score >= threshold, else "NS".
-
-    :param threshold: decision threshold. tuned on the dev set (see experiments/part1_all_results.csv)
-    :param metric: key of overlap_metrics.METRICS ("recall" done; "jaccard", "dice" are Mevin's)
-    :param pool: "max" = score each passage separately, keep the best; "union" = merge all passages into one word set
-    :param stem: apply Porter stemming
-    :param remove_stopwords: drop stop words before comparing
+    Part 1: score the fact against the passages with a word overlap metric, S if the score >= threshold.
+    pool: "max" = best single passage, "union" = all passages merged into one word set.
     """
     def __init__(self, threshold: float = 0.63, metric: str = "recall", pool: str = "max",
                  stem: bool = True, remove_stopwords: bool = True):
