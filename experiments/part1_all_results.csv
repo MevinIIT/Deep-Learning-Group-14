@@ -45,7 +45,7 @@ f1,precision/recall,none,True,max,0.6968,0.06,0.6863
 jaccard,Jaccard,none,True,max,0.6968,0.0309,0.6863
 dice,Dice,none,True,max,0.6968,0.06,0.6863
 tfidf_cosine,TF-IDF,none,True,max,0.7059,0.1267,0.6697
-tfidf_recall,TF-IDF,none,True,max,0.8009,0.5725,0.7843
+tfidf_recall,TF-IDF,none,True,max,0.8009,0.5725,0.7828
 rouge1_p,ROUGE,none,True,max,0.6787,0.0185,0.6606
 rouge1_r,ROUGE,none,True,max,0.7828,0.6667,0.7828
 rouge1_f,ROUGE,none,True,max,0.6923,0.0325,0.6757
@@ -65,7 +65,7 @@ f1,precision/recall,none,True,union,0.6199,0.0103,0.5852
 jaccard,Jaccard,none,True,union,0.6199,0.0052,0.5852
 dice,Dice,none,True,union,0.6199,0.0103,0.5852
 tfidf_cosine,TF-IDF,none,True,union,0.6833,0.135,0.632
-tfidf_recall,TF-IDF,none,True,union,0.7964,0.5725,0.7738
+tfidf_recall,TF-IDF,none,True,union,0.7964,0.5725,0.7722
 rouge1_p,ROUGE,none,True,union,0.6244,0.0035,0.5747
 rouge1_r,ROUGE,none,True,union,0.7873,0.75,0.7677
 rouge1_f,ROUGE,none,True,union,0.6244,0.0069,0.5732
@@ -125,7 +125,7 @@ f1,precision/recall,stem,True,max,0.6968,0.0426,0.6637
 jaccard,Jaccard,stem,True,max,0.6968,0.0217,0.6652
 dice,Dice,stem,True,max,0.6968,0.0426,0.6652
 tfidf_cosine,TF-IDF,stem,True,max,0.724,0.1232,0.6953
-tfidf_recall,TF-IDF,stem,True,max,0.8235,0.5725,0.7994
+tfidf_recall,TF-IDF,stem,True,max,0.819,0.5461,0.7858
 rouge1_p,ROUGE,stem,True,max,0.6923,0.0168,0.6727
 rouge1_r,ROUGE,stem,True,max,0.8145,0.6667,0.8024
 rouge1_f,ROUGE,stem,True,max,0.7059,0.0325,0.6923
@@ -145,7 +145,7 @@ f1,precision/recall,stem,True,union,0.6154,0.0107,0.5641
 jaccard,Jaccard,stem,True,union,0.6154,0.0054,0.5626
 dice,Dice,stem,True,union,0.6154,0.0107,0.5626
 tfidf_cosine,TF-IDF,stem,True,union,0.6923,0.1374,0.6561
-tfidf_recall,TF-IDF,stem,True,union,0.81,0.5725,0.7919
+tfidf_recall,TF-IDF,stem,True,union,0.8009,0.6053,0.7843
 rouge1_p,ROUGE,stem,True,union,0.6244,0.0035,0.5747
 rouge1_r,ROUGE,stem,True,union,0.8009,0.7143,0.7798
 rouge1_f,ROUGE,stem,True,union,0.6244,0.0069,0.5732
@@ -205,7 +205,7 @@ f1,precision/recall,lemma,True,max,0.7014,0.0612,0.6802
 jaccard,Jaccard,lemma,True,max,0.7014,0.0316,0.6802
 dice,Dice,lemma,True,max,0.7014,0.0612,0.6802
 tfidf_cosine,TF-IDF,lemma,True,max,0.7195,0.1229,0.6817
-tfidf_recall,TF-IDF,lemma,True,max,0.8235,0.5725,0.8205
+tfidf_recall,TF-IDF,lemma,True,max,0.8145,0.5743,0.8039
 rouge1_p,ROUGE,lemma,True,max,0.6923,0.0185,0.6742
 rouge1_r,ROUGE,lemma,True,max,0.8054,0.6667,0.7798
 rouge1_f,ROUGE,lemma,True,max,0.7059,0.0325,0.6938
@@ -225,7 +225,7 @@ f1,precision/recall,lemma,True,union,0.6154,0.0105,0.5747
 jaccard,Jaccard,lemma,True,union,0.6154,0.0053,0.5747
 dice,Dice,lemma,True,union,0.6154,0.0105,0.5747
 tfidf_cosine,TF-IDF,lemma,True,union,0.6923,0.1183,0.6486
-tfidf_recall,TF-IDF,lemma,True,union,0.8145,0.5725,0.8115
+tfidf_recall,TF-IDF,lemma,True,union,0.8054,0.5743,0.7888
 rouge1_p,ROUGE,lemma,True,union,0.629,0.0035,0.5867
 rouge1_r,ROUGE,lemma,True,union,0.8009,0.7143,0.7783
 rouge1_f,ROUGE,lemma,True,union,0.629,0.0069,0.5837
@@ -285,7 +285,7 @@ f1,precision/recall,lemma+stem,True,max,0.7014,0.0606,0.6712
 jaccard,Jaccard,lemma+stem,True,max,0.6968,0.03,0.6697
 dice,Dice,lemma+stem,True,max,0.6968,0.0583,0.6697
 tfidf_cosine,TF-IDF,lemma+stem,True,max,0.724,0.1233,0.6787
-tfidf_recall,TF-IDF,lemma+stem,True,max,0.8371,0.5725,0.8311
+tfidf_recall,TF-IDF,lemma+stem,True,max,0.8281,0.5725,0.8069
 rouge1_p,ROUGE,lemma+stem,True,max,0.6923,0.0168,0.6727
 rouge1_r,ROUGE,lemma+stem,True,max,0.819,0.6667,0.7919
 rouge1_f,ROUGE,lemma+stem,True,max,0.7059,0.0325,0.6923
@@ -305,7 +305,7 @@ f1,precision/recall,lemma+stem,True,union,0.6109,0.0132,0.5626
 jaccard,Jaccard,lemma+stem,True,union,0.6109,0.0066,0.5626
 dice,Dice,lemma+stem,True,union,0.6109,0.0132,0.5626
 tfidf_cosine,TF-IDF,lemma+stem,True,union,0.6923,0.1297,0.6531
-tfidf_recall,TF-IDF,lemma+stem,True,union,0.8145,0.5725,0.8069
+tfidf_recall,TF-IDF,lemma+stem,True,union,0.8054,0.5743,0.7888
 rouge1_p,ROUGE,lemma+stem,True,union,0.6244,0.0078,0.5777
 rouge1_r,ROUGE,lemma+stem,True,union,0.8054,0.7143,0.7903
 rouge1_f,ROUGE,lemma+stem,True,union,0.6244,0.0155,0.5762
