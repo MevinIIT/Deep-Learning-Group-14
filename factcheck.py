@@ -60,7 +60,7 @@ def overlap_recall(fact_tokens: set, text: str) -> float:
 
 
 def fact_query_tokens(fact: str, title: Optional[str]) -> set:
-    # drop the person's name, it's in almost every passage anyway
+    # drop the person's name, it is in most passages
     toks = content_tokens(fact)
     if title:
         reduced = toks - content_tokens(title)
@@ -251,15 +251,8 @@ class AlwaysEntailedFactChecker(FactChecker):
 
 class WordRecallThresholdFactChecker(FactChecker):
     """
-    Part 1: word-overlap fact checker.  [Kovindu: class + preprocessing + recall metric; Mevin: tuning + extra metrics]
-    Pipeline: tokenize fact and passages (preprocessing.tokenize) -> score with a metric (overlap_metrics.METRICS)
-    -> predict "S" if score >= threshold, else "NS".
-
-    :param threshold: decision threshold. tuned on the dev set (see experiments/part1_all_results.csv)
-    :param metric: key of overlap_metrics.METRICS ("recall" done; "jaccard", "dice" are Mevin's)
-    :param pool: "max" = score each passage separately, keep the best; "union" = merge all passages into one word set
-    :param stem: apply Porter stemming
-    :param remove_stopwords: drop stop words before comparing
+    Part 1: score the fact against the passages with a word overlap metric, S if the score >= threshold.
+    pool: "max" = best single passage, "union" = all passages merged into one word set.
     """
     def __init__(self, threshold: float = 0.63, metric: str = "recall", pool: str = "max",
                  stem: bool = True, remove_stopwords: bool = True):
